@@ -8,7 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './about-component.scss',
 })
 export class AboutComponent {
-
-  imagePath: string ="assets/owner_photo.png";
-
+  imagePath: string = 'assets/owner_photo.png';
 }

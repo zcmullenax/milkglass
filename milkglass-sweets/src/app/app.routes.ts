@@ -5,8 +5,8 @@ import { CurrentPreOrderComponent } from './Components/current-pre-order-compone
 import { GalleryComponent } from './Components/gallery-component/gallery-component';
 
 export const routes: Routes = [
-    { path: '', component: LandingPage },
-    { path: 'about', component: AboutComponent },
-    { path: 'current', component: CurrentPreOrderComponent },
-    { path: 'gallery', component: GalleryComponent }
+  { path: '', component: LandingPage },
+  { path: 'about', component: AboutComponent },
+  { path: 'current', component: CurrentPreOrderComponent },
+  { path: 'gallery', component: GalleryComponent },
 ];

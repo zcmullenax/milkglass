@@ -1,44 +1,43 @@
 .main {
-    display: flex;
-    background-color: rgba(128, 0, 128, 0.7);
-    justify-content: space-between;
-    padding: 2rem;
-    border-radius: 10px;
-    margin-inline: 0.5rem;
+  display: flex;
+  background-color: rgba(128, 0, 128, 0.7);
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-inline: 0.5rem;
 }
 
 .about-text-container {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
 .owner-photo-container {
-    display: flex;
-    flex: 1 1 auto;
-    min-height: 400px;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 400px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 .owner-photo-mask {
-    width: 100%;
-    height: 100%;
-    position: relative;
-   
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 .owner-photo-mask img {
-    object-fit: contain;
+  object-fit: contain;
 }
 
 #ownerPhoto {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 #ownerNameLabel {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .about-title {
-    font-size: 3rem;
+  font-size: 3rem;
 }
