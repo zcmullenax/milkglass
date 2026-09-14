@@ -1,0 +1,42 @@
+.main {
+  background-color: rgba(128, 0, 128, 0.7);
+  border-radius: 5px;
+  margin-inline: 0.5rem;
+}
+.page-header {
+  background-color: rgba(128, 0, 128, 0.7);
+  margin-bottom: 0.25rem;
+  border-radius: 5px;
+  padding-inline: 2rem;
+  margin-inline: 0.5rem;
+  padding-block-end: 0.25rem;
+}
+h1 {
+  margin: 0;
+}
+
+.product {
+  margin: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #5f17d423;
+  border-radius: 5px;
+  background-color: #efe4ff;
+  color: #6017d4;
+}
+
+.product-upper {
+  margin-bottom: 0.5rem;
+}
+
+.image-wrapper {
+  height: 200px;
+  position: relative;
+}
+.image-wrapper img {
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+.absolute {
+  position: absolute;
+}
