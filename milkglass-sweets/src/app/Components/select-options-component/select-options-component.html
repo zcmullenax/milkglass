@@ -1,0 +1,74 @@
+<div class="main">
+  @if (selectedProduct.flavors && selectedProduct.flavors.length > 0) {
+    <p-iftalabel>
+      <p-select
+        [options]="selectedProduct.flavors"
+        [(ngModel)]="selectedFlavor"
+        inputId="dd-flavor"
+        class="half"
+        appendTo="body"
+      ></p-select>
+      <label for="dd-flavor">Select Flavor</label>
+    </p-iftalabel>
+  }
+
+  @if (selectedProduct.subProducts) {
+    <p-iftalabel>
+      <p-select
+        [options]="selectedProduct.subProducts"
+        [(ngModel)]="selectedSubProduct"
+        optionLabel="name"
+        inputId="dd-subproduct"
+        class="half"
+      ></p-select>
+      <label for="dd-subproduct">Select Design</label>
+    </p-iftalabel>
+    <p-carousel
+      [value]="selectedProduct.subProducts"
+      [numVisible]="1"
+      [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-subProduct #item>
+        <div class="product">
+          <div class="product-upper">
+            <div class="image-wrapper">
+              <img
+                ngSrc="assets/{{ subProduct.image }}"
+                [alt]="subProduct.name"
+                fill
+                class="rounded-border"
+              />
+            </div>
+          </div>
+          <div class="mb-4 font-medium">{{ subProduct.name }}</div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  }
+  <div class="input-wrapper half">
+    <label for="input-qty">Qty</label>
+    <div class="number-input-with-buttons">
+      <p-button
+        class="input-button"
+        size="large"
+        icon="pi pi-minus"
+        (onClick)="decrementQty()"
+      ></p-button>
+      <p-inputnumber
+        size="large"
+        [(ngModel)]="selectedQty"
+        [min]="1"
+        [max]="20"
+        [inputSize]="1"
+        inputId="input-qty"
+      ></p-inputnumber>
+      <p-button
+        class="input-button"
+        size="large"
+        icon="pi pi-plus"
+        (onClick)="incrementQty()"
+      ></p-button>
+    </div>
+  </div>
+</div>

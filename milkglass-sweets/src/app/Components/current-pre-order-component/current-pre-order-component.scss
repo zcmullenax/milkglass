@@ -1,9 +1,30 @@
 .main {
-  background-color: var(--p-primary-400);
-  border-radius: 5px;
   margin-inline: 0.5rem;
   --p-carousel-indicator-active-background: var(--p-primary-800);
+  max-height: calc(100vh - 132px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
+
+.card {
+  border-radius: 10px;
+  background-color: var(--p-primary-400);
+}
+
+.card-title {
+  color: var(--p-surface-0);
+  font-size: 1.25rem;
+  padding: 0.5rem;
+}
+
+.select-options-component {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 .page-header {
   background-color: var(--p-primary-400);
   color: var(--p-surface-0);
@@ -13,6 +34,7 @@
   margin-inline: 0.5rem;
   padding-block-end: 0.25rem;
 }
+
 h1 {
   margin: 0;
 }
@@ -28,6 +50,21 @@ h1 {
 
 .product-upper {
   margin-bottom: 0.5rem;
+}
+.product-lower {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name-and-price {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0.5rem;
+}
+
+.product-button-container {
+  display: flex;
+  justify-content: end;
 }
 
 .image-wrapper {

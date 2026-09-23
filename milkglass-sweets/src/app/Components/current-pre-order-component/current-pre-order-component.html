@@ -27,17 +27,33 @@
               />
             </div>
           </div>
-          <div class="mb-4 font-medium">{{ product.name }}</div>
-          <div class="flex justify-between items-center">
-            <div class="mt-0 font-semibold text-xl">{{ '$' + product.price }}</div>
-            <span>
-              <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
-              <p-button icon="pi pi-pen-to-square" styleClass="ml-2" [outlined]="true" />
-              <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
-            </span>
+          <div class="product-lower">
+            <div class="product-name-and-price">
+              <div class="product-name">{{ product.name }}</div>
+              <div class="product-price">{{ '$' + product.price }}</div>
+            </div>
+            <div class="product-button-container">
+              <p-button
+                icon="pi pi-pen-to-square"
+                severity="primary"
+                (onClick)="selectedProduct = product"
+                label="Select Options"
+              ></p-button>
+              <!-- <p-button icon="pi pi-pen-to-square" styleClass="ml-2" [outlined]="true" />
+              <p-button icon="pi pi-shopping-cart" styleClass="ml-2" /> -->
+            </div>
           </div>
         </div>
       </ng-template>
     </p-carousel>
   </div>
+  @if (selectedProduct) {
+    <div class="card">
+      <div class="card-title">Select options for: {{ selectedProduct.name }}</div>
+      <app-select-options-component
+        [selectedProduct]="selectedProduct"
+        [responsiveOptions]="responsiveOptions"
+      ></app-select-options-component>
+    </div>
+  }
 </div>

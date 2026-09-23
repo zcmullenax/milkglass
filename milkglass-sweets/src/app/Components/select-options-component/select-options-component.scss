@@ -1,0 +1,54 @@
+p-inputnumber {
+  --p-inputnumber-button-background: var(--p-primary-200);
+}
+
+.input-button {
+  --p-button-primary-background: var(--p-primary-800);
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  label {
+    color: var(--p-surface-0);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.product {
+  margin: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #5f17d423;
+  border-radius: 5px;
+  background-color: #efe4ff;
+  color: rgb(58, 58, 58);
+}
+
+.product-upper {
+  margin-bottom: 0.5rem;
+}
+
+.image-wrapper {
+  height: 200px;
+  position: relative;
+}
+.image-wrapper img {
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+.half {
+  width: 50%;
+}
+
+.number-input-with-buttons {
+  display: flex;
+  gap: 0.125rem;
+}
