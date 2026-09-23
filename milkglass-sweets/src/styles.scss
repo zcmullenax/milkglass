@@ -4,13 +4,15 @@
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   body {
-    min-height: 100vh;
-    min-width: 100vw;
-    overflow: hidden;
-    margin: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // min-height: 100vh;
+    // min-width: 100vw;
+    // overflow: hidden;
+    // margin: 0.5rem;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    background-color: var(--p-primary-100);
+    margin: 0;
   }
 }
 

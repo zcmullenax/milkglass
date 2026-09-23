@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import Lara from '@primeuix/themes/lara';
+import { MGSweetsPreset } from '../mgsweets-preset';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,7 +12,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     providePrimeNG({
       theme: {
-        preset: Lara,
+        preset: MGSweetsPreset,
+        options: { darkModeSelector: '.p-dark' },
       },
     }),
   ],

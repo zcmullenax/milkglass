@@ -80,4 +80,19 @@ export const productData: Product[] = [
     inventoryStatus: InventoryStatus.PreOrder,
     active: true,
   },
+  {
+    id: 1005,
+    name: 'Random New Thing',
+    description:
+      'Regular-sized, Halloween-themed cookies that spell out BOO. The middle O can be replaced with one of several spooky options!',
+    quantityDescriptor: 'Qty 1 = (Three 3.5-inch cookies)',
+    image: 'halloween_regular_boo_set.jpg',
+    price: 1000000,
+    category: Category.Candy,
+    size: Size.Regular,
+    seasonalEvents: [SeasonalName.Halloween, SeasonalName.Fall],
+    flavors: [Flavor.VanillaBean, Flavor.Chocolate, Flavor.Funfetti],
+    inventoryStatus: InventoryStatus.PreOrder,
+    active: false,
+  },
 ];
