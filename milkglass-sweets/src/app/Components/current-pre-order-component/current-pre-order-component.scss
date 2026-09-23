@@ -1,7 +1,7 @@
 .main {
   margin-inline: 0.5rem;
   --p-carousel-indicator-active-background: var(--p-primary-800);
-  max-height: calc(100vh - 132px);
+
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
