@@ -1,0 +1,15 @@
+.cart-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid var(--p-primary-800);
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.cart-item-upper {
+}
+
+.cart-item-lower {
+  display: flex;
+  justify-content: space-between;
+}

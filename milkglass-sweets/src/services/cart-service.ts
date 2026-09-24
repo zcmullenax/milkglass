@@ -15,6 +15,9 @@ export class CartService {
 
   readonly cart = this._cart.asReadonly();
 
+  readonly maxQty = 20;
+  readonly minQty = 1;
+
   readonly itemCount = computed(() =>
     this._cart().items.reduce((total, item) => total + item.quantity, 0),
   );
@@ -34,13 +37,17 @@ export class CartService {
       );
 
       if (existing) {
+        let newQuantity = existing.quantity + quantity;
+        if (newQuantity > this.maxQty) {
+          newQuantity = this.maxQty;
+        }
         return {
           ...cart,
           items: cart.items.map((x) =>
             x.productId === item.productId &&
             x.selectedFlavor === item.selectedFlavor &&
             x.selectedSubProductId === item.selectedSubProductId
-              ? { ...x, quantity: x.quantity + item.quantity }
+              ? { ...x, quantity: newQuantity }
               : x,
           ),
         };
@@ -61,6 +68,46 @@ export class CartService {
       items: cart.items.filter((x) => x !== item),
     }));
 
+    this.saveCart();
+  }
+
+  incrementItemQty(item: CartItem): void {
+    this._cart.update((cart) => {
+      const existing = cart.items.find((x) => x === item);
+
+      if (existing) {
+        let newQuantity = existing.quantity + 1;
+        if (newQuantity > this.maxQty) {
+          newQuantity = this.maxQty;
+        }
+        return {
+          ...cart,
+          items: cart.items.map((x) => (x === item ? { ...x, quantity: newQuantity } : x)),
+        };
+      }
+
+      return { ...cart };
+    });
+    this.saveCart();
+  }
+
+  decrementItemQty(item: CartItem): void {
+    this._cart.update((cart) => {
+      const existing = cart.items.find((x) => x === item);
+
+      if (existing) {
+        let newQuantity = existing.quantity - 1;
+        if (newQuantity < this.minQty) {
+          newQuantity = this.minQty;
+        }
+        return {
+          ...cart,
+          items: cart.items.map((x) => (x === item ? { ...x, quantity: newQuantity } : x)),
+        };
+      }
+
+      return { ...cart };
+    });
     this.saveCart();
   }
 

@@ -50,6 +50,8 @@
   @if (selectedProduct) {
     <div class="card">
       <div class="card-title">Select options for: {{ selectedProduct.name }}</div>
+      <div class="description-text">Description: {{ selectedProduct.description }}</div>
+      <div class="description-text">{{ selectedProduct.quantityDescriptor }}</div>
       <app-select-options-component
         [selectedProduct]="selectedProduct"
         [responsiveOptions]="responsiveOptions"

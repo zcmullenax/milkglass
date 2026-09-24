@@ -1,10 +1,15 @@
-@for (item of cart()?.items; track item) {
-  <div>
-    | {{ item.productName }} | {{ item.selectedFlavor }} | {{ item.selectedSubProductName }} |
-    {{ item.quantity }} | {{ item.price }} |
+<div class="cart-items-container">
+  @for (item of cart()?.items; track item) {
+    <!-- <div>
+        | {{ item.productName }} | {{ item.selectedFlavor }} | {{ item.selectedSubProductName }} |
+        {{ item.quantity }} | {{ item.price }} |
+    
+        <button (click)="removeItem(item)">Remove</button>
+      </div> -->
+    <app-cart-item-component [item]="item"></app-cart-item-component>
+  }
+</div>
 
-    <button (click)="removeItem(item)">Remove</button>
-  </div>
-}
-
-<div>Total: {{ total() }}</div>
+<div>
+  <b>Total: {{ total() | currency }}</b>
+</div>

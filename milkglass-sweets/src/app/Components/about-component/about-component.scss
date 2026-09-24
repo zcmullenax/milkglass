@@ -1,6 +1,7 @@
 .main {
   display: flex;
-  background-color: rgba(128, 0, 128, 0.7);
+  background-color: var(--p-primary-400);
+  color: var(--p-surface-0);
   justify-content: space-between;
   padding: 2rem;
   border-radius: 10px;

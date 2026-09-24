@@ -31,10 +31,12 @@ export class SelectOptionsComponent implements OnInit {
   selectedFlavor: Flavor | undefined;
   selectedSubProduct: SubProduct | undefined;
   selectedQty: number = 1;
-  minQty: number = 1;
-  maxQty: number = 20;
+  minQty: number;
+  maxQty: number;
 
   constructor(private _cartService: CartService) {
+    this.minQty = this._cartService.minQty;
+    this.maxQty = this._cartService.maxQty;
     effect(() => {
       const selectedProduct = this.selectedProduct();
       this.resetAll();

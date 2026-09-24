@@ -2,10 +2,12 @@ import { Component, OnInit, Signal } from '@angular/core';
 import { Cart } from '../../../models/cart';
 import { CartService } from '../../../services/cart-service';
 import { CartItem } from '../../../models/cart-item';
+import { CartItemComponent } from './cart-item-component/cart-item-component';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cart-component',
-  imports: [],
+  imports: [CartItemComponent, CurrencyPipe],
   templateUrl: './cart-component.html',
   styleUrl: './cart-component.scss',
 })
@@ -20,5 +22,13 @@ export class CartComponent {
 
   removeItem(item: CartItem): void {
     this._cartService.removeItem(item);
+  }
+
+  incrementItem(item: CartItem): void {
+    this._cartService.incrementItemQty(item);
+  }
+
+  decrementItem(item: CartItem): void {
+    this._cartService.decrementItemQty(item);
   }
 }
