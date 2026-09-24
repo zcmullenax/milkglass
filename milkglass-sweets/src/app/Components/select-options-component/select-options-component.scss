@@ -52,3 +52,14 @@ p-inputnumber {
   display: flex;
   gap: 0.125rem;
 }
+
+.select-options-lower {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-wrapper {
+  align-items: flex-end;
+  justify-content: end;
+  padding-inline-end: 1rem;
+}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, effect, input, Input, OnInit } from '@angular/core';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { SelectModule } from 'primeng/select';
 import { Product } from '../../../models/product';
@@ -9,6 +9,7 @@ import { SubProduct } from '../../../models/sub-product';
 import { CarouselModule } from 'primeng/carousel';
 import { NgOptimizedImage } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { CartService } from '../../../services/cart-service';
 
 @Component({
   selector: 'app-select-options-component',
@@ -25,7 +26,7 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './select-options-component.scss',
 })
 export class SelectOptionsComponent implements OnInit {
-  @Input() selectedProduct: Product = new Product();
+  readonly selectedProduct = input.required<Product>();
   @Input() responsiveOptions: any[] | undefined;
   selectedFlavor: Flavor | undefined;
   selectedSubProduct: SubProduct | undefined;
@@ -33,10 +34,16 @@ export class SelectOptionsComponent implements OnInit {
   minQty: number = 1;
   maxQty: number = 20;
 
+  constructor(private _cartService: CartService) {
+    effect(() => {
+      const selectedProduct = this.selectedProduct();
+      this.resetAll();
+      this.setDefaultFlavor();
+    });
+  }
+
   ngOnInit(): void {
-    if (this.selectedProduct.flavors !== undefined && this.selectedProduct.flavors.length > 0) {
-      this.selectedFlavor = this.selectedProduct.flavors[0];
-    }
+    this.setDefaultFlavor();
   }
 
   incrementQty(): void {
@@ -51,5 +58,42 @@ export class SelectOptionsComponent implements OnInit {
     if (this.selectedQty < this.minQty) {
       this.selectedQty = this.minQty;
     }
+  }
+
+  setDefaultFlavor(): void {
+    if (
+      this.selectedProduct() !== undefined &&
+      this.selectedProduct().flavors !== undefined &&
+      this.selectedProduct().flavors!.length > 0
+    ) {
+      this.selectedFlavor = this.selectedProduct().flavors![0] ?? undefined;
+    }
+  }
+
+  resetQty(): void {
+    this.selectedQty = this.minQty;
+  }
+
+  resetFlavor(): void {
+    this.selectedFlavor = undefined;
+  }
+
+  resetSubProduct(): void {
+    this.selectedSubProduct = undefined;
+  }
+
+  resetAll(): void {
+    this.resetFlavor();
+    this.resetQty();
+    this.resetSubProduct();
+  }
+
+  addToCart(): void {
+    this._cartService.addItem(
+      this.selectedProduct(),
+      this.selectedFlavor,
+      this.selectedSubProduct,
+      this.selectedQty,
+    );
   }
 }

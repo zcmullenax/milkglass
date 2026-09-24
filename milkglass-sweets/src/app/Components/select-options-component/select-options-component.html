@@ -1,8 +1,8 @@
 <div class="main">
-  @if (selectedProduct.flavors && selectedProduct.flavors.length > 0) {
+  @if (selectedProduct().flavors && selectedProduct().flavors!.length > 0) {
     <p-iftalabel>
       <p-select
-        [options]="selectedProduct.flavors"
+        [options]="selectedProduct().flavors"
         [(ngModel)]="selectedFlavor"
         inputId="dd-flavor"
         class="half"
@@ -12,10 +12,10 @@
     </p-iftalabel>
   }
 
-  @if (selectedProduct.subProducts) {
+  @if (selectedProduct().subProducts) {
     <p-iftalabel>
       <p-select
-        [options]="selectedProduct.subProducts"
+        [options]="selectedProduct().subProducts"
         [(ngModel)]="selectedSubProduct"
         optionLabel="name"
         inputId="dd-subproduct"
@@ -24,7 +24,7 @@
       <label for="dd-subproduct">Select Design</label>
     </p-iftalabel>
     <p-carousel
-      [value]="selectedProduct.subProducts"
+      [value]="selectedProduct().subProducts ?? []"
       [numVisible]="1"
       [numScroll]="1"
       [responsiveOptions]="responsiveOptions"
@@ -46,28 +46,39 @@
       </ng-template>
     </p-carousel>
   }
-  <div class="input-wrapper half">
-    <label for="input-qty">Qty</label>
-    <div class="number-input-with-buttons">
+  <div class="select-options-lower">
+    <div class="input-wrapper half">
+      <label for="input-qty">Qty</label>
+      <div class="number-input-with-buttons">
+        <p-button
+          class="input-button"
+          size="large"
+          icon="pi pi-minus"
+          (onClick)="decrementQty()"
+        ></p-button>
+        <p-inputnumber
+          size="large"
+          [(ngModel)]="selectedQty"
+          [min]="1"
+          [max]="20"
+          [inputSize]="2"
+          inputId="input-qty"
+        ></p-inputnumber>
+        <p-button
+          class="input-button"
+          size="large"
+          icon="pi pi-plus"
+          (onClick)="incrementQty()"
+        ></p-button>
+      </div>
+    </div>
+    <div class="input-wrapper half cart-wrapper">
       <p-button
+        size="large"
+        icon="pi pi-shopping-cart"
+        label="Add to Order"
         class="input-button"
-        size="large"
-        icon="pi pi-minus"
-        (onClick)="decrementQty()"
-      ></p-button>
-      <p-inputnumber
-        size="large"
-        [(ngModel)]="selectedQty"
-        [min]="1"
-        [max]="20"
-        [inputSize]="1"
-        inputId="input-qty"
-      ></p-inputnumber>
-      <p-button
-        class="input-button"
-        size="large"
-        icon="pi pi-plus"
-        (onClick)="incrementQty()"
+        (onClick)="addToCart()"
       ></p-button>
     </div>
   </div>

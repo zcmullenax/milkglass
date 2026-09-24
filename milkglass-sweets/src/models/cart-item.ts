@@ -1,10 +1,11 @@
 import { Flavor } from '../data/flavor-enum';
-import { Product } from './product';
-import { SubProduct } from './sub-product';
 
-export class CartItem {
-  product?: Product;
+export interface CartItem {
+  productId: number;
+  productName: string;
   selectedFlavor?: Flavor;
-  selectedSubProduct?: SubProduct;
-  qty?: number;
+  selectedSubProductId?: number;
+  selectedSubProductName?: string;
+  price: number;
+  quantity: number;
 }
