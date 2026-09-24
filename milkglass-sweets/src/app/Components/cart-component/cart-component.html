@@ -1,12 +1,10 @@
-@for (item of cart?.items; track item.productId) {
+@for (item of cart()?.items; track item) {
   <div>
     | {{ item.productName }} | {{ item.selectedFlavor }} | {{ item.selectedSubProductName }} |
     {{ item.quantity }} | {{ item.price }} |
 
-    <!-- <button (click)="removeItem(item.productId)">
-      Remove
-    </button> -->
+    <button (click)="removeItem(item)">Remove</button>
   </div>
 }
 
-<div>Total: {{ total }}</div>
+<div>Total: {{ total() }}</div>

@@ -37,7 +37,11 @@ export class CartService {
         return {
           ...cart,
           items: cart.items.map((x) =>
-            x.productId === item.productId ? { ...x, quantity: x.quantity + item.quantity } : x,
+            x.productId === item.productId &&
+            x.selectedFlavor === item.selectedFlavor &&
+            x.selectedSubProductId === item.selectedSubProductId
+              ? { ...x, quantity: x.quantity + item.quantity }
+              : x,
           ),
         };
       }
@@ -51,15 +55,10 @@ export class CartService {
     this.saveCart();
   }
 
-  removeItem(productId: number, flavor?: Flavor, subProductId?: number): void {
+  removeItem(item: CartItem): void {
     this._cart.update((cart) => ({
       ...cart,
-      items: cart.items.filter(
-        (x) =>
-          x.productId !== productId &&
-          x.selectedFlavor !== flavor &&
-          x.selectedSubProductId !== subProductId,
-      ),
+      items: cart.items.filter((x) => x !== item),
     }));
 
     this.saveCart();
