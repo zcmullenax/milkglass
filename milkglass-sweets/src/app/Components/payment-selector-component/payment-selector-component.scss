@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.customer-input {
+  --p-inputtext-placeholder-color: var(--p-surface-300);
+  --p-select-placeholder-color: var(--p-surface-300);
+}

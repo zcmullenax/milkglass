@@ -1,0 +1,19 @@
+<div class="main">
+  <div class="label-and-selector-wrapper">
+    <label>Select a pickup date</label>
+    <p-datePicker
+      [disabledDates]="disabledDates"
+      (onSelect)="handleOnDateSelect($event)"
+      (onClear)="handleOnDateClear()"
+      (onMonthChange)="onMonthChange($event)"
+      [appendTo]="'body'"
+      [showIcon]="true"
+    ></p-datePicker>
+  </div>
+  @if (showTimePicker) {
+    <div class="label-and-selector-wrapper">
+      <label>Select a time</label>
+      <p-select [options]="availableTimes" [(ngModel)]="selectedTime"></p-select>
+    </div>
+  }
+</div>

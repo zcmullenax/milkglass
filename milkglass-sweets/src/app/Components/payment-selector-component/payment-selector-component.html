@@ -1,0 +1,76 @@
+<div class="main">
+  <p-iftaLabel>
+    <input
+      class="customer-input"
+      type="text"
+      id="customerName"
+      pInputText
+      [(ngModel)]="payment.customerName"
+      placeholder="Jane Doe"
+      fluid
+    />
+    <label for="customerName">Name</label>
+  </p-iftaLabel>
+  <p-iftaLabel>
+    <input
+      class="customer-input"
+      type="text"
+      id="customerEmail"
+      pInputText
+      [(ngModel)]="payment.customerEmail"
+      placeholder="janedoe@gimmecookies.com"
+      fluid
+    />
+    <label for="customerEmail">Email</label>
+  </p-iftaLabel>
+  <p-iftaLabel>
+    <input
+      class="customer-input"
+      type="text"
+      id="customerPhone"
+      pInputText
+      pInputMask="(999) 999-9999"
+      [(ngModel)]="payment.customerPhone"
+      placeholder="(555) 867-5309"
+    />
+    <label for="customerPhone">Phone</label>
+  </p-iftaLabel>
+  <p-iftaLabel>
+    <p-select
+      class="customer-input"
+      id="paymentType"
+      [(ngModel)]="payment.paymentType"
+      [options]="availablePaymentTypes"
+      [appendTo]="'body'"
+      placeholder="Payment Type"
+    />
+    <label for="paymentType">Select Payment Type</label>
+  </p-iftaLabel>
+  @if (payment.paymentType == 'PayPal') {
+    <p-iftaLabel>
+      <input
+        class="customer-input"
+        type="text"
+        id="paypalInfo"
+        pInputText
+        [(ngModel)]="payment.paypalIndentifer"
+      />
+      <label for="paypalInfo">PayPal ID</label>
+    </p-iftaLabel>
+  }
+  @if (payment.paymentType == 'Venmo') {
+    <p-iftaLabel>
+      <input
+        class="customer-input"
+        type="text"
+        id="venmoInfo"
+        pInputText
+        [(ngModel)]="payment.venmoIdentifier"
+      />
+      <label for="venmoInfo">Venmo ID</label>
+    </p-iftaLabel>
+  }
+  @if (payment.paymentType == 'Cash') {
+    You will pay with cash upon pickup/delivery.
+  }
+</div>
