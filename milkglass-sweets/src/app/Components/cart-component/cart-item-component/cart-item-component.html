@@ -1,15 +1,22 @@
 <div class="cart-item-wrapper">
   <div class="cart-item-upper">
-    <div>{{ item().productName }}</div>
-    <div>
-      <b>{{ item().price | currency }}</b>
+    <div class="cart-item-upper-left">
+      <div>{{ item().productName }}</div>
+      <div>
+        <b>{{ item().price | currency }}</b> each
+      </div>
+      @if (item().selectedFlavor) {
+        <div>Flavor: {{ item().selectedFlavor }}</div>
+      }
+      @if (item().selectedSubProductName) {
+        <div>Design: {{ item().selectedSubProductName }}</div>
+      }
     </div>
-    @if (item().selectedFlavor) {
-      <div>Flavor: {{ item().selectedFlavor }}</div>
-    }
-    @if (item().selectedSubProductName) {
-      <div>Design: {{ item().selectedSubProductName }}</div>
-    }
+    <div class="cart-item-upper-right">
+      <div>
+        Subtotal: <b>{{ item().price * item().quantity | currency }}</b>
+      </div>
+    </div>
   </div>
   <div class="cart-item-lower">
     <div class="number-input-with-buttons">
@@ -20,6 +27,7 @@
         (onClick)="decrementQty()"
       ></p-button>
       <p-inputnumber
+        class="cart-item-qty"
         size="large"
         [(ngModel)]="item().quantity"
         [min]="1"

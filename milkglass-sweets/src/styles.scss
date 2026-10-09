@@ -2,7 +2,15 @@
 @import 'primeicons/primeicons.css';
 
 :root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Amatic SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  button {
+    font-family: 'Amatic SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
   body {
     // min-height: 100vh;
     // min-width: 100vw;
@@ -13,6 +21,9 @@
     // align-items: center;
     background-color: var(--p-primary-100);
     margin: 0;
+    --p-stepper-steppanel-background: none;
+    --p-stepper-separator-background: var(--p-primary-color);
+    --p-stepper-step-number-size: 1.5rem;
   }
   html,
   body {
@@ -20,10 +31,43 @@
     padding: 0;
     height: 100%;
   }
+  h1 {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
 }
 
 .fleur-de-leah-regular {
   font-family: 'Fleur De Leah', cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+.amatic-sc-regular {
+  font-family: 'Amatic SC', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.amatic-sc-bold {
+  font-family: 'Amatic SC', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.p-datepicker-day {
+  font-weight: 700;
+}
+.p-datepicker-select-month,
+.p-datepicker-select-year {
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 1.25rem;
+}
+.p-inputtext {
+  font-weight: 700;
+}
+.p-stepper,
+.p-stepitem {
+  font-family: 'Amatic SC', sans-serif;
 }

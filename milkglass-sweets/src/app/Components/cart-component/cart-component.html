@@ -1,15 +1,62 @@
-<div class="cart-items-container">
-  @for (item of cart()?.items; track item) {
-    <!-- <div>
-        | {{ item.productName }} | {{ item.selectedFlavor }} | {{ item.selectedSubProductName }} |
-        {{ item.quantity }} | {{ item.price }} |
-    
-        <button (click)="removeItem(item)">Remove</button>
-      </div> -->
-    <app-cart-item-component [item]="item"></app-cart-item-component>
-  }
-</div>
+<p-stepper [value]="1">
+  <p-step-item [value]="1">
+    <p-step>Review Cart</p-step>
+    <p-step-panel>
+      <ng-template #content let-activateCallback="activateCallback">
+        <div class="step-content">
+          <div class="cart-items-container">
+            @for (item of cart()?.items; track item) {
+              <app-cart-item-component [item]="item"></app-cart-item-component>
+            }
+          </div>
+          <div style="text-align: right">
+            <b>Total: {{ total() | currency }}</b>
+          </div>
+        </div>
+        <div class="step-nav-wrapper">
+          <p-button class="stepper-button" label="Next" (onClick)="activateCallback(2)"></p-button>
+        </div>
+      </ng-template>
+    </p-step-panel>
+  </p-step-item>
+  <p-step-item [value]="2">
+    <p-step>Select Pickup Date</p-step>
+    <p-step-panel>
+      <ng-template #content let-activateCallback="activateCallback">
+        <div class="step-content">
+          <app-pickup-date-selector-component></app-pickup-date-selector-component>
+        </div>
 
-<div>
-  <b>Total: {{ total() | currency }}</b>
-</div>
+        <div class="step-nav-wrapper">
+          <p-button
+            class="stepper-button"
+            label="Back"
+            severity="secondary"
+            (onClick)="activateCallback(1)"
+          />
+          <p-button class="stepper-button" label="Next" (onClick)="activateCallback(3)"></p-button>
+        </div>
+      </ng-template>
+    </p-step-panel>
+  </p-step-item>
+  <p-step-item [value]="3">
+    <p-step>Contact and Payment Info</p-step>
+    <p-step-panel>
+      <ng-template #content let-activateCallback="activateCallback">
+        <div class="step-content">
+          <app-payment-selector-component></app-payment-selector-component>
+        </div>
+
+        <div class="step-nav-wrapper">
+          <p-button
+            class="stepper-button"
+            label="Back"
+            severity="secondary"
+            (onClick)="activateCallback(2)"
+          />
+          <p-button class="stepper-button" label="Submit" (onClick)="submitForm()"></p-button>
+        </div>
+      </ng-template>
+    </p-step-panel>
+  </p-step-item>
+</p-stepper>

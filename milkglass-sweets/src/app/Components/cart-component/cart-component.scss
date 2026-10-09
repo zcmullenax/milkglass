@@ -3,3 +3,22 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.step-nav-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: end;
+  justify-content: end;
+  margin-top: 1rem;
+}
+
+.step-content {
+  border: 1px solid var(--p-primary-300);
+  border-radius: 5px;
+  padding: 0.25rem;
+}
+
+.stepper-button {
+  --p-button-padding-y: 0.125rem;
+  // --p-button-padding-x: 0;
+}

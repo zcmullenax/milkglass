@@ -7,9 +7,16 @@
 }
 
 .cart-item-upper {
+  align-items: center;
 }
 
-.cart-item-lower {
+.cart-item-lower,
+.cart-item-upper {
   display: flex;
   justify-content: space-between;
+}
+
+.cart-item-qty {
+  --p-inputtext-disabled-background: white;
+  --p-inputtext-disabled-color: Black;
 }

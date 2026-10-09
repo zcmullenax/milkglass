@@ -4,10 +4,21 @@ import { CartService } from '../../../services/cart-service';
 import { CartItem } from '../../../models/cart-item';
 import { CartItemComponent } from './cart-item-component/cart-item-component';
 import { CurrencyPipe } from '@angular/common';
+import { PickupDateSelectorComponent } from '../pickup-date-selector-component/pickup-date-selector-component';
+import { PaymentSelectorComponent } from '../payment-selector-component/payment-selector-component';
+import { StepperModule } from 'primeng/stepper';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-cart-component',
-  imports: [CartItemComponent, CurrencyPipe],
+  imports: [
+    CartItemComponent,
+    CurrencyPipe,
+    PickupDateSelectorComponent,
+    PaymentSelectorComponent,
+    StepperModule,
+    ButtonModule,
+  ],
   templateUrl: './cart-component.html',
   styleUrl: './cart-component.scss',
 })
@@ -30,5 +41,9 @@ export class CartComponent {
 
   decrementItem(item: CartItem): void {
     this._cartService.decrementItemQty(item);
+  }
+
+  submitForm(): void {
+    //TODO: Make form submit
   }
 }
