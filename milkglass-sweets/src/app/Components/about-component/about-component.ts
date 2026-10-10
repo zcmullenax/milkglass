@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './about-component.scss',
 })
 export class AboutComponent {
-  imagePath: string = 'assets/owner_photo.png';
+  imagePath: string = 'https://images.milkglass-sweets.com/owner_photo.png';
 }
