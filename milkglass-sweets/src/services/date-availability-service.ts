@@ -5,10 +5,11 @@ import { TimeRange } from '../data/time-range-enum';
   providedIn: 'root',
 })
 export class DateAvailabilityService {
-  private validDates = new Set<string>(['2026-10-29', '2026-10-30']);
+  private validDates = new Set<string>(['2026-10-28', '2026-10-30', '2026-10-31']);
   private validTimes: Record<string, TimeRange[]> = {
-    '2026-10-29': [TimeRange.Morning, TimeRange.Afternoon, TimeRange.Evening],
-    '2026-10-30': [TimeRange.EarlyMorning, TimeRange.LateAfternoon, TimeRange.Evening],
+    '2026-10-28': [TimeRange.Evening],
+    '2026-10-30': [TimeRange.Evening],
+    '2026-10-31': [TimeRange.EarlyMorning, TimeRange.EarlyAfternoon],
   };
 
   isValidDate(date: Date): boolean {

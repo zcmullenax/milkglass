@@ -10,6 +10,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { NgOptimizedImage } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CartService } from '../../../services/cart-service';
+import { MessageService, ToastMessageOptions } from 'primeng/api';
 
 @Component({
   selector: 'app-select-options-component',
@@ -34,18 +35,23 @@ export class SelectOptionsComponent implements OnInit {
   minQty: number;
   maxQty: number;
 
-  constructor(private _cartService: CartService) {
+  constructor(
+    private _cartService: CartService,
+    private _messageService: MessageService,
+  ) {
     this.minQty = this._cartService.minQty;
     this.maxQty = this._cartService.maxQty;
     effect(() => {
       const selectedProduct = this.selectedProduct();
       this.resetAll();
       this.setDefaultFlavor();
+      this.setDefaultOption();
     });
   }
 
   ngOnInit(): void {
     this.setDefaultFlavor();
+    this.setDefaultOption();
   }
 
   incrementQty(): void {
@@ -70,6 +76,21 @@ export class SelectOptionsComponent implements OnInit {
     ) {
       this.selectedFlavor = this.selectedProduct().flavors![0] ?? undefined;
     }
+  }
+
+  setDefaultOption(): void {
+    if (
+      this.selectedProduct() !== undefined &&
+      this.selectedProduct().subProducts !== undefined &&
+      this.selectedProduct().subProducts!.length > 0
+    ) {
+      const randomNum = this.randomInt(0, this.selectedProduct().subProducts!.length - 1);
+      this.selectedSubProduct = this.selectedProduct().subProducts![randomNum] ?? undefined;
+    }
+  }
+
+  randomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   resetQty(): void {
@@ -97,5 +118,17 @@ export class SelectOptionsComponent implements OnInit {
       this.selectedSubProduct,
       this.selectedQty,
     );
+    this.showToastSuccess();
+  }
+
+  showToastSuccess(): void {
+    const message: ToastMessageOptions = {
+      severity: 'success',
+      summary: 'Success',
+      detail: `${this.selectedQty} of ${this.selectedProduct().name} added to cart`,
+      life: 6000,
+      key: 'cen',
+    };
+    this._messageService.add(message);
   }
 }

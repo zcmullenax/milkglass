@@ -30,6 +30,7 @@ export class PickupDateSelectorComponent {
   handleOnDateSelect(date: Date) {
     this.selectedDate = date;
     this.availableTimes = this._dateAvailability.getValidTimes(date);
+    this.setDefaultTimeslot();
     this.showTimePicker = true;
   }
 
@@ -37,6 +38,16 @@ export class PickupDateSelectorComponent {
     this.selectedDate = null;
     this.showTimePicker = false;
     this.availableTimes = [];
+  }
+
+  setDefaultTimeslot(): void {
+    if (
+      this.selectedDate !== undefined &&
+      this.availableTimes !== undefined &&
+      this.availableTimes.length > 0
+    ) {
+      this.selectedTime = this.availableTimes[0] ?? undefined;
+    }
   }
 
   onMonthChange(event: DatePickerMonthChangeEvent): void {

@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  fill: var(--p-primary-color);
+  stroke: var(--p-primary-color);
+}

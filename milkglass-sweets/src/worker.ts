@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { OrderForm } from './models/order-form';
+import { DatePipe, formatDate } from '@angular/common';
 
 interface Env {
   RESEND_API_KEY: string;
@@ -9,7 +10,7 @@ function generateHtml(orderForm: OrderForm) {
   const itemRows = orderForm.cart?.items
     .map(
       (item) =>
-        `<li>Product: ${item.productName} Flavor: ${item.selectedFlavor} Option: ${item.selectedSubProductName} Qty: ${item.quantity} Price: ${item.price}</li>`,
+        `<li>Product: ${item.productName} | Flavor: ${item.selectedFlavor} | Option: ${item.selectedSubProductName} | Qty: ${item.quantity} | Price: ${item.price}</li>`,
     )
     .join('');
   return `
@@ -22,6 +23,8 @@ function generateHtml(orderForm: OrderForm) {
         <p>Phone: ${orderForm.paymentFields.customerPhone}</p>
         <p>Payment Type: ${orderForm.paymentFields.paymentType}</p>
         <p>${orderForm.paymentFields.paymentType} Details: ${orderForm.paymentFields.paypalIndentifer != null ? orderForm.paymentFields.paypalIndentifer : orderForm.paymentFields.venmoIdentifier}</p>
+        <p>Pickup Date: ${orderForm.selectedDate}</p>
+        <p>Pickup Time: ${orderForm.selectedTime}</p>
         <p><b>Items Ordered:</b></p>
         <ul>${itemRows}</ul>
         <p><strong>Total: $${orderForm.total}.00</strong></p>
@@ -93,7 +96,7 @@ export default {
           from: 'Website Order <new-order@orders.milkglass-sweets.com>',
 
           // Replace with your receiving inbox.
-          to: ['milkglass.sweets@gmail.com'],
+          to: ['milkglass.sweets@gmail.com', email],
 
           subject: `New Order From ${name}`,
 

@@ -4,6 +4,17 @@
   </div>
   <div class="outlet-wrapper">
     <router-outlet></router-outlet>
+    <p-toast position="top-left" key="tl" />
+    <p-toast position="top-center" key="tc" />
+    <p-toast position="top-right" key="tr" />
+    <p-toast
+      position="center"
+      key="cen"
+      [breakpoints]="{ '920px': { width: '60%', right: 'auto' } }"
+    />
+    <p-toast position="bottom-left" key="bl" />
+    <p-toast position="bottom-center" key="bc" />
+    <p-toast position="bottom-right" key="br" />
   </div>
   <div class="footer-wrapper">
     <app-footer-component></app-footer-component>

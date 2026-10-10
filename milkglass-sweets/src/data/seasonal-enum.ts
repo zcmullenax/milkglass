@@ -10,4 +10,5 @@ export enum SeasonalName {
   Thanksgiving = 'Thanksgiving',
   Christmas = 'Christmas',
   NewYears = 'New Years',
+  PaintYourOwn = 'Paint Your Own',
 }

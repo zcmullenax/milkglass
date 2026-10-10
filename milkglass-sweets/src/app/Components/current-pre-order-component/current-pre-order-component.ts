@@ -30,8 +30,9 @@ export class CurrentPreOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this._productService.getProductsWithSubProducts().then((products) => {
-      this.products.set(products);
-      console.log(this.products);
+      this.products.set(
+        products.filter((product) => product.inventoryStatus == InventoryStatus.PreOrder),
+      );
     });
     this.responsiveOptions = [
       {

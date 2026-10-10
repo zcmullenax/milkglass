@@ -28,7 +28,7 @@
   position: relative;
 }
 .owner-photo-mask img {
-  object-fit: contain;
+  object-fit: scale-down;
 }
 
 #ownerPhoto {
@@ -36,9 +36,29 @@
 }
 
 #ownerNameLabel {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .about-title {
-  font-size: 3rem;
+  font-size: 2rem;
+}
+
+.footer-container {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--p-primary-color);
+}
+
+.footer-copyright {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--p-primary-color);
+}
+
+i {
+  font-size: 2rem;
 }
