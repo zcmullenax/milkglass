@@ -1,6 +1,5 @@
 import { Resend } from 'resend';
 import { OrderForm } from './models/order-form';
-import { Fetcher, Request, Response as cloudResponse } from '@cloudflare/workers-types';
 
 interface Env {
   RESEND_API_KEY: string;
@@ -32,13 +31,13 @@ function generateHtml(orderForm: OrderForm) {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<cloudResponse> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
     // Handle the email API.
     if (url.pathname === '/api/send-email') {
       if (request.method !== 'POST') {
-        return cloudResponse.json(
+        return Response.json(
           { error: 'Method not allowed' },
           {
             status: 405,
@@ -52,7 +51,7 @@ export default {
       try {
         body = await request.json();
       } catch {
-        return cloudResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+        return Response.json({ error: 'Invalid JSON body' }, { status: 400 });
       }
 
       const name =
@@ -83,7 +82,7 @@ export default {
         (paypal && paypal.length > 100) ||
         (venmo && venmo.length > 100)
       ) {
-        return cloudResponse.json({ error: 'Invalid form data' }, { status: 400 });
+        return Response.json({ error: 'Invalid form data' }, { status: 400 });
       }
 
       try {
@@ -106,14 +105,14 @@ export default {
         if (error) {
           console.error('Resend email error:', error);
 
-          return cloudResponse.json({ error: 'Unable to send email' }, { status: 502 });
+          return Response.json({ error: 'Unable to send email' }, { status: 502 });
         }
 
-        return cloudResponse.json({ success: true, id: data?.id }, { status: 200 });
+        return Response.json({ success: true, id: data?.id }, { status: 200 });
       } catch (error) {
         console.error('Email endpoint error:', error);
 
-        return cloudResponse.json({ error: 'Internal server error' }, { status: 500 });
+        return Response.json({ error: 'Internal server error' }, { status: 500 });
       }
     }
 
