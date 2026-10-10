@@ -124,7 +124,7 @@ export class CartComponent {
     };
     const detail = () => {
       if (severity == 'success') {
-        return 'We have received your order and will contact you to confirm payment and delivery.';
+        return 'We have received your order and will contact you to confirm payment and pickup.';
       }
       if (formIsValid) {
         return 'There was an error submitting your order. Please try again.';
