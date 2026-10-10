@@ -5,9 +5,11 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import Lara from '@primeuix/themes/lara';
 import { MGSweetsPreset } from '../mgsweets-preset';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     providePrimeNG({

@@ -1,8 +1,13 @@
+//prettier-ignore
 {
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
   "name": "milkglass",
+  "main": "./src/worker.ts",
   "compatibility_date": "2026-09-13",
   "assets": {
     "directory": "./dist/milkglass-sweets/browser",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "not_found_handling": "single-page-application",
+  },
 }

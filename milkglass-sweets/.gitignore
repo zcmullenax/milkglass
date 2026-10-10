@@ -37,6 +37,9 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/milkglass.env
+.wrangler/*
+.dev.vars
 
 # System files
 .DS_Store
