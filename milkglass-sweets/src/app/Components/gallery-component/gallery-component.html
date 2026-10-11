@@ -1,1 +1,33 @@
-<p>Stay tuned! Gallery coming soon!</p>
+<div class="main">
+  <p-galleria
+    [value]="images1"
+    [showIndicators]="false"
+    [showThumbnails]="true"
+    [containerStyle]="{ 'max-width': '640px' }"
+    [numVisible]="4"
+    [showItemNavigators]="true"
+  >
+    <ng-template #item let-item>
+      <img [src]="item" style="width: 100%; display: block" />
+    </ng-template>
+    <ng-template #thumbnail let-item>
+      <img [src]="item" style="width: 50%; display: block" />
+    </ng-template>
+  </p-galleria>
+
+  <p-galleria
+    [value]="images2"
+    [showIndicators]="false"
+    [showThumbnails]="true"
+    [containerStyle]="{ 'max-width': '640px' }"
+    [numVisible]="4"
+    [showItemNavigators]="true"
+  >
+    <ng-template #item let-item>
+      <img [src]="item" style="width: 100%; display: block" />
+    </ng-template>
+    <ng-template #thumbnail let-item>
+      <img [src]="item" style="width: 50%; display: block" />
+    </ng-template>
+  </p-galleria>
+</div>
